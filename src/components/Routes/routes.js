@@ -1,6 +1,6 @@
 import React from "react"
 import { Route } from "react-router-dom"
-import Menu from "../auth/Menu"
+
 
 
 
@@ -32,16 +32,26 @@ function Home() {
 }
 function About() {
     return <>
-        <Menu />
+
         <h1>This is About page </h1></>
 } function ContactUs() {
-    return <><Menu />
+    return <>
         <h1>This is ContactUs </h1></>
 } function Products() {
-    return <><Menu />
+    return <>
         <h1>This is Products page </h1></>
 } function Services() {
-    return <><Menu />
+    return <>
         <h1>This is Services page </h1></>
 }
+function AdminPanel() {
+    return <>
+        <h1>This is Admin Panel </h1></>
+} function UserConfig() {
+    return <>
+        <h1>This is UserConfig </h1></>
+}
+
+
 export default Paths;
+export { About, ContactUs, Products, Services, AdminPanel, UserConfig }

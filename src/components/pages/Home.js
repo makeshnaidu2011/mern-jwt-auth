@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 import UserContext from "../../context/UserContext";
-import Menu from "../auth/Menu"
+
 export default function Home() {
   const { userData } = useContext(UserContext);
 
@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div className="page">
       {userData.user ? (<>
-        <Menu name={userData.user.displayName} />
+        {/* <Menu name={userData.user.displayName} /> */}
         <h1>Welcome {userData.user.displayName}</h1>
 
 

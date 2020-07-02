@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom"
+import UserContext from "../../context/UserContext"
 
-function Menu(props) {
-    console.log(props.name)
+function Menu() {
+    const { userData } = useContext(UserContext);
     return (<div className="Menu">
         <ul className="link-items">
             <Link to="/"> <li>
@@ -17,9 +18,9 @@ function Menu(props) {
             </li></Link><Link to="/ContactUs"> <li>
                 Contact us
             </li></Link>
-            {props.name === "Admin" && <><Link to="/ContactUs"> <li>
+            {userData.user.displayName === "Admin" && <><Link to="/AdminPanel"> <li>
                 Admin pannel
-            </li></Link><Link to="/ContactUs"> <li>
+            </li></Link><Link to="/UserConfig"> <li>
                     User Config
             </li></Link></>}
 

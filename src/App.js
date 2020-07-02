@@ -6,7 +6,8 @@ import Home from "./components/pages/Home";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import UserContext from "./context/UserContext";
-import Paths from "./components/Routes/routes"
+import { About, ContactUs, Services, Products, AdminPanel, UserConfig } from "./components/Routes/routes"
+import Menu from "./components/auth/Menu"
 
 import "./style.css";
 
@@ -48,12 +49,26 @@ export default function App() {
       <UserContext.Provider value={{ userData, setUserData }}>
         <Header />
         <div className="container">
-
+          {userData.user && <Menu />}
 
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          {window.localStorage.getItem("auth-token") && <Paths />}
+          {userData.user && <><Route path="/About" component={About} />
+            <Route path="/ContactUs" component={ContactUs} />
+            <Route path="/Products" component={Products} />
+            <Route path="/Services" component={Services} />
+            {userData.user.displayName === "Admin" && <>
+              <Route path="/AdminPanel" component={AdminPanel} />
+              <Route path="/UserConfig" component={UserConfig} />
+
+            </>}
+
+
+
+          </>}
+
+
 
 
         </div>
