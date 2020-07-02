@@ -62,12 +62,12 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #e02525;
+  background-color: lightblue;
 }
 #header .title {
   margin: 0;
   padding: 0 1rem;
-  color: #ffffff;
+  color: #c65780;
 }
 #header .auth-options {
   height: 100%;
@@ -75,12 +75,12 @@ body {
 }
 #header .auth-options button {
   padding: 0 1rem;
-  background-color: #b91b1b;
+  background-color: lightblue;
   color: #ffffff;
   font-size: 1.1rem;
 }
 #header .auth-options button:hover {
-  background-color: #be3a3a;
+  background-color: lightblue;
 }
 
 /* form */
@@ -159,4 +159,31 @@ body {
     padding: 0 0.5rem;
     font-size: 0.9rem;
   }
+}
+
+.link-items {
+  display: flex;
+  justify-content: space-around;
+  color: black;
+  font-weight: 400px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="password"] {
+  width: 50%;
+  padding: 0.3rem;
+  border: 1px solid lightblue;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  font-size: 1.1rem;
+}
+.form input[type="submit"] {
+  padding: 0.3rem 2rem;
+  border: 1px solid #d1ffbb;
+  border-radius: 8px;
+  background-color: #bcaaff;
+  font-size: 1.1rem;
+  color: white;
 }

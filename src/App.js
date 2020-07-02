@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Axios from "axios";
 import Header from "./components/layout/Header";
 import Home from "./components/pages/Home";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import UserContext from "./context/UserContext";
+import Paths from "./components/Routes/routes"
 
 import "./style.css";
 
@@ -23,12 +24,12 @@ export default function App() {
         token = "";
       }
       const tokenRes = await Axios.post(
-        "https://salty-island-22421.herokuapp.com/users/tokenIsValid",
+        "http://localhost:5000/users/tokenIsValid",
         null,
         { headers: { "x-auth-token": token } }
       );
       if (tokenRes.data) {
-        const userRes = await Axios.get("https://salty-island-22421.herokuapp.com/users/", {
+        const userRes = await Axios.get("http://localhost:5000/users/", {
           headers: { "x-auth-token": token },
         });
         setUserData({
@@ -41,20 +42,25 @@ export default function App() {
     checkLoggedIn();
   }, []);
 
+
   return (
     <>
-      <BrowserRouter>
-        <UserContext.Provider value={{ userData, setUserData }}>
-          <Header />
-          <div className="container">
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/login" component={Login} />
-              <Route path="/register" component={Register} />
-            </Switch>
-          </div>
-        </UserContext.Provider>
-      </BrowserRouter>
+      <UserContext.Provider value={{ userData, setUserData }}>
+        <Header />
+        <div className="container">
+
+
+          <Route exact path="/" component={Home} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          {window.localStorage.getItem("auth-token") && <Paths />}
+
+
+        </div>
+      </UserContext.Provider>
+
     </>
   );
 }
+
+
